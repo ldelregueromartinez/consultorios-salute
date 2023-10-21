@@ -25,3 +25,7 @@ SRC, controllers, database, model, routes,
 
  "dev": "nodemon src/index.js"
 
+ 5- creacion de modelos de base, luego de controllers y finalmente routes. 
+
+ 
+
