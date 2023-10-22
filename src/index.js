@@ -12,6 +12,7 @@ import './model/consultorios.js';
 import './model/especialistas.js';
 import './model/historiasclinicas.js';
 import './model/pacientes.js';
+import './model/asientosclinicos.js';
 
 // iniciar el servidor en el puerto 3000 y testear la conexión
 

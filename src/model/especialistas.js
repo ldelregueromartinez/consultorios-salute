@@ -62,3 +62,14 @@ Especialistas.hasMany(Pacientes, {
         foreignKey: 'especialistaId',
         target: 'id'
     });
+
+
+    Especialistas.hasMany(AsientosClinicos, {
+        foreignKey: 'especialistaId',
+        source: 'id'
+        });
+        
+        AsientosClinicos.belongsTo(Especialistas, {
+            foreignKey: 'especialistaId',
+            target: 'id'
+        });

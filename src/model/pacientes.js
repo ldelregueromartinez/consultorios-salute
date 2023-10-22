@@ -2,6 +2,7 @@
 import { DataTypes } from 'sequelize';
 
 import { sequelize } from '../database/database.js';
+import { HistoriasClinicas } from './historiasclinicas.js';
 
 // estructura de la tabla 
 
@@ -43,3 +44,14 @@ export const Pacientes = sequelize.define('pacientes',
 }
 
 );
+
+// Método 2 de freingKey. 
+Pacientes.belongsTo(HistoriasClinicas, {
+    foreignKey: 'pacienteId',
+    source: 'id'
+    });
+    
+    HistoriasClinicas.hasOne(Pacientes, {
+        foreignKey: 'pacienteId',
+        target: 'id'
+    });
