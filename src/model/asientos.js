@@ -3,6 +3,14 @@ import { DataTypes } from 'sequelize';
 
 import { sequelize } from '../database/database.js';
 
+import { Pacientes } from './pacientes.js';
+
+import { Especialistas } from './especialistas.js'; 
+
+import { Consultorios } from './consultorios.js';
+
+import { HistoriasClinicas } from './historiasclinicas.js';
+
 // estructura de la tabla 
 
 export const Asientos = sequelize.define('asientos',
@@ -30,25 +38,3 @@ export const Asientos = sequelize.define('asientos',
 }
 
 );
-
-// Método 2 de freingKey. 
-Asientos.belongsTo(HistoriasClinicas, {
-    foreignKey: 'asientoId',
-    source: 'id'
-    });
-
-    //En HistoriasClinicas Habrá asientoclinicoID
-    HistoriasClinicas.hasOne(Asientos, {
-        foreignKey: 'asientoId',
-        target: 'id'
-    });
-
-    Asientos.belongsToMany(Pacientes, {
-        foreignKey: 'asientoId',
-        source: 'id'
-        });
-     //En Pacientes Habrá asientoclinicoID   
-    Pacientes.belongsToMany(Asientos, {
-        foreignKey: 'asientoId',
-        target: 'id'
-        });

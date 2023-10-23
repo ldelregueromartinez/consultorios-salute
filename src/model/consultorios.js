@@ -2,6 +2,9 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 import { Especialistas } from './especialistas.js';
+import { Pacientes } from './pacientes.js';
+import { HistoriasClinicas } from './historiasclinicas.js';
+import { Asientos } from './asientos.js';
 
 
 // estructura de la tabla 
@@ -26,13 +29,3 @@ export const Consultorios = sequelize.define('consultorios',
 
 );
 
-// Método 2 de freingKey. 
-Consultorios.hasMany(Especialistas, {
-foreignKey: 'consultorioId',
-source: 'id'
-});
-
-Especialistas.belongsTo(Consultorios, {
-    foreignKey: 'consultorioId',
-    target: 'id'
-});

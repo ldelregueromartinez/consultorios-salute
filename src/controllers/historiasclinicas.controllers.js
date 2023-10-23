@@ -2,6 +2,7 @@ import { Especialistas } from '../model/especialistas.js';
 import { Consultorios } from '../model/consultorios.js';
 import { Pacientes } from '../model/pacientes.js';
 import { HistoriasClinicas } from '../model/historiasclinicas.js';
+import { Asientos } from '../model/asientos.js';
 
 //Función crear Historias Clinicas
 
