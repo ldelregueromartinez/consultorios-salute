@@ -9,7 +9,7 @@ import especialistasRoutes from './routes/especialistas.routes.js';
 import historiasclinicasRoutes from './routes/historiasclinicas.routes.js';
 import pacientesRoutes from './routes/pacientes.routes.js';
 import consultoriosRoutes from './routes/consultorios.routes.js';
-import asientosclinicos from './routes/asientosclinicos.routes.js/';
+import asientosRoutes from './routes/asientos.routes.js/';
 
 // Midlewares
 app.use(express.json());
@@ -19,7 +19,7 @@ app.use(especialistasRoutes);
 app.use(historiasclinicasRoutes);
 app.use(pacientesRoutes);
 app.use(consultoriosRoutes);
-app.use(asientosclinicos);
+app.use(asientosRoutes);
 
 
 // exportar el servidor

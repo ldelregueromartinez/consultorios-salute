@@ -64,12 +64,12 @@ Especialistas.hasMany(Pacientes, {
     });
 
 
-    Especialistas.hasMany(AsientosClinicos, {
+    Especialistas.hasMany(Asientos, {
         foreignKey: 'especialistaId',
         source: 'id'
         });
         
-        AsientosClinicos.belongsTo(Especialistas, {
+        Asientos.belongsTo(Especialistas, {
             foreignKey: 'especialistaId',
             target: 'id'
         });

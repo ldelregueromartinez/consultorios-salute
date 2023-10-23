@@ -1,10 +1,9 @@
+import { Asientos } from '../model/asientos.js';
 import { Especialistas } from '../model/especialistas.js';
-import { AsientosClinicos } from '../model/asientosclinicos.js';
-import { Pacientes } from '../model/pacientes.js';
 
 //Función crear Asiento Clinico
 
-const createAsientosClinicos = async (req, res) => {
+const createAsientos = async (req, res) => {
     try {
 
         const {
@@ -16,15 +15,15 @@ const createAsientosClinicos = async (req, res) => {
             especialistaId
 
         } = req.body;
-        const asientoclinico = AsientosClinicos.findByPk(asientoclinicoId);
+        const asiento = Asientos.findByPk(asientoId);
         if(
-            !asientoclinico
+            !asiento
         ){
             return res.status(400).json({
                error:'El asunto clinico es inválido'
             });
         };
-        const nuevoasientoclinico = await AsientosClinicos.create({
+        const nuevoasiento = await Asientos.create({
             fecha,
             antecedentes,
             acto_profesional,
@@ -34,7 +33,7 @@ const createAsientosClinicos = async (req, res) => {
 
 
         });
-        console.log(nuevoasientoclinico);
+        console.log(nuevoasiento);
 
         res.send("asiento clinico creado");
     } catch (error) {
@@ -46,11 +45,11 @@ const createAsientosClinicos = async (req, res) => {
 // Funcion de visualizar todos los Asientos Clinicos
 
 
-const getAsientosClinicos = async (req, res) => {
+const getAsientos = async (req, res) => {
     try {
-        const asientosclinicos = await AsientosClinicos.findAll();
-        console.log(asientosclinicos);
-        res.json(asientosclinicos);
+        const asientos = await Asientos.findAll();
+        console.log(asientos);
+        res.json(asientos);
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
@@ -58,16 +57,16 @@ const getAsientosClinicos = async (req, res) => {
 
 // Funcion de visualizar por id
 
-const getAsientoClinico = async (req, res) => {
+const getAsiento = async (req, res) => {
     try {
         
         const { id } = req.params;
-        const asientoclinico = await AsientosClinicos.findByPk(id);
-        if (!asientoclinico) {
+        const asiento = await Asientos.findByPk(id);
+        if (!asiento) {
             return res.status(400).json({ error: 'El asiento clinico no existe' })
         }
-        console.log(asientoclinico);
-        res.json(asientoclinico);
+        console.log(asiento);
+        res.json(asiento);
     } catch (error) {
         return res.status(500).json({ message: error.message })
     };
@@ -77,15 +76,15 @@ const getAsientoClinico = async (req, res) => {
 
 
 //Borrar Asiento Clinico
-const deleteAsientoClinico = async (req, res) => {
+const deleteAsiento = async (req, res) => {
     try {
         const { id } = req.params;
-        const asientoclinico = await AsientosClinicos.findByPk(id);
-        if (!asientoclinico) {
+        const asiento = await Asientos.findByPk(id);
+        if (!asiento) {
             return res.status(400).json({ error: 'El asiento clinico no existe' })
         }
 
-        await AsientosClinicos.destroy({
+        await Asientos.destroy({
             where: {
                 id
             },
@@ -101,7 +100,7 @@ const deleteAsientoClinico = async (req, res) => {
 
 
 //Funcion de modificar un Asiento Clinico
-const putAsientoClinico = async (req, res) => {
+const putAsiento = async (req, res) => {
 
     try {
         const { id } = req.params;
@@ -117,36 +116,27 @@ const putAsientoClinico = async (req, res) => {
         } = req.body;
 
 
-        const asientoclinico = await AsientosClinicos.findByPk(id);
+        const asiento = await Asientos.findByPk(id);
         
-        if (!asientoclinico) {
+        if (!asiento) {
             return res.status(400).json({ error: 'El asiento clinico es inválido' })
         }
-        asientoclinico.fecha = fecha;
-        asientoclinico.antecedentes = antecedentes;
-        asientoclinico.acto_profesional = acto_profesional;
-        asientoclinico.otras_informaciones = otras_informaciones;
-        asientoclinico.pacienteId = pacienteId;
-        asientoclinico.especialistaId = especialistaId
+        asiento.fecha = fecha;
+        asiento.antecedentes = antecedentes;
+        asiento.acto_profesional = acto_profesional;
+        asiento.otras_informaciones = otras_informaciones;
+        asiento.pacienteId = pacienteId;
+        asiento.especialistaId = especialistaId
 
 
-        await asientoclinico.save();
-        res.json(asientoclinico);
+        await asiento.save();
+        res.json(asiento);
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
 
 
-}
+};
 
 
-
-
-
-
-
-
-
-
-
-export { createAsientosClinicos, getAsientosClinicos, getAsientoClinico, deleteAsientoClinico, putAsientoClinico };
+export { createAsientos, getAsientos, getAsiento, deleteAsiento, putAsiento };
