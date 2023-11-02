@@ -49,6 +49,14 @@ export const Especialistas = sequelize.define('especialistas',
     },
     fechaEgreso: {
         type: DataTypes.DATEONLY
+    },
+    consultorioID: {
+        type: DataTypes.INTEGER,
+        references: {
+            model:'consultorios',
+              key: 'id'
+             },
+             foreingKey: true   
     }
     
 },

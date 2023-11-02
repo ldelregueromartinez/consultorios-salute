@@ -39,6 +39,14 @@ export const Pacientes = sequelize.define('pacientes',
     },
     fechaEgreso: {
         type: DataTypes.DATEONLY
+    },
+    especialistaId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model:'especialistas',
+              key: 'id'
+             },
+             foreingKey: true   
     }
     
 },

@@ -31,6 +31,22 @@ export const Asientos = sequelize.define('asientos',
     },
     otras_informaciones: {
         type: DataTypes.STRING
+    },
+    pacienteId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model:'pacientes',
+              key: 'id'
+             },
+             foreingKey: true   
+    },
+    especialistaId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model:'especialistas',
+              key: 'id'
+             },
+             foreingKey: true   
     }    
 },
 {

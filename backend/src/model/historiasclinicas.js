@@ -18,6 +18,22 @@ export const HistoriasClinicas = sequelize.define('historiasclinicas',
         primaryKey: true,
         autoIncrement: true
     },
+    pacienteId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model:'pacientes',
+              key: 'id'
+             },
+             foreingKey: true   
+    },
+    asientoclinicoId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model:'asientos',
+              key: 'id'
+             },
+             foreingKey: true   
+    }
 
     
 },
@@ -27,4 +43,4 @@ export const HistoriasClinicas = sequelize.define('historiasclinicas',
 
 );
 
-
+asientoclinicoId
