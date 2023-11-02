@@ -36,7 +36,7 @@ export const Especialistas = sequelize.define('especialistas',
         type: DataTypes.INTEGER
     },
     fecha_nac: {
-        type: DataTypes.DATEONLY
+        type: DataTypes.DATE
     },
     matricula: {
         type: DataTypes.STRING
@@ -50,7 +50,7 @@ export const Especialistas = sequelize.define('especialistas',
     fechaEgreso: {
         type: DataTypes.DATEONLY
     },
-    consultorioID: {
+    consultorioId: {
         type: DataTypes.INTEGER,
         references: {
             model:'consultorios',
