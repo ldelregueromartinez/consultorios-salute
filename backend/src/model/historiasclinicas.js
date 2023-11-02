@@ -43,4 +43,3 @@ export const HistoriasClinicas = sequelize.define('historiasclinicas',
 
 );
 
-asientoclinicoId
