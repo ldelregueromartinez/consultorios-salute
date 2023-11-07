@@ -21,8 +21,8 @@ async function main() {
     try{
         await sequelize.sync({force:true});
         console.log('Conexión a base de datos exitosa');
-        app.listen(3000);
-        console.log("Servidor en puerto 3000");
+        app.listen(3300);
+        console.log("Servidor en puerto 3300");
     } catch (error){
         console.error('No se pudo conectar: ', error);
     };
