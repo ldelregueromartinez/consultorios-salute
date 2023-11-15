@@ -20,14 +20,27 @@ const createAsientos = async (req, res) => {
             especialistaId
 
         } = req.body;
-        const asiento = Asientos.findByPk(asientoId);
+        const especialista = Especialistas.findByPk(especialistaId);
         if(
-            !asiento
+            !especialista
         ){
             return res.status(400).json({
-               error:'El asunto clinico es inválido'
+               error:'El especialista es inválido'
             });
         };
+
+
+
+        const paciente = Pacientes.findByPk(pacienteId);
+        if(
+            !paciente
+        ){
+            return res.status(400).json({
+               error:'El paciente es inválido'
+            });
+        };
+
+
         const nuevoasiento = await Asientos.create({
             fecha,
             antecedentes,

@@ -14,14 +14,30 @@ const createHistoriasClinicas = async (req, res) => {
             pacienteId
 
         } = req.body;
-        const historiaclinica = HistoriasClinicas.findByPk(historiaclinicaId);
+
+
+        const paciente = Pacientes.findByPk(pacienteId);
         if(
-            !historiaclinica
+            !paciente
         ){
             return res.status(400).json({
-               error:'La Historia Clinica es inválida'
+               error:'El paciente es inválido'
             });
         };
+
+
+
+        const asiento = Asientos.findByPk(asientoclinicoId);
+        if(
+            !asiento
+        ){
+            return res.status(400).json({
+               error:'El asiento clinico es inválido'
+            });
+        };
+
+
+
         const nuevaHistoriaClinica = await HistoriasClinicas.create({
             asientoclinicoId,
             pacienteId
